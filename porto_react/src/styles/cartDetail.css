@@ -1,0 +1,138 @@
+.cart-book-detail {
+    border: rgb(210, 223, 202) 1px solid;
+    display: flex;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    margin-bottom: 10px;
+}
+
+.cart-book-detail:hover{
+    box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.book-empty{
+    margin-top:-156px;
+}
+
+textarea{
+    width: 107px;
+    height: 30px;
+}
+
+.detail-book-cart1{
+    text-align:left;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size: 24px;
+}
+.detail-book-cart2{
+    text-align:left;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: silver;
+}
+.detail-book-cart3{
+    text-align:left;
+    margin-bottom: 20px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.detail-book-cart4{
+    text-align:left;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: crimson;
+}
+.top-body-cart{
+    padding-top: 120px;
+}
+.top-body-cart1{
+    padding-top: 120px;
+}
+.top-body-cart2{
+    padding-top: 175px;
+}
+.top-body-cart3{
+    padding-top: 200px;
+}
+.top-body-cart4{
+    padding-top: 120px;
+}
+.top-body-cart5{
+    padding-top: 120px;
+}
+.empty-form{
+    padding-top: 180px;
+}
+@media screen and (max-width: 600px) {
+    .cart-body {
+        margin-left: -50px;
+    }
+    .cart-book-detail:hover {
+        box-shadow: none;
+    }
+    .cart-book-detail {
+        border: none;
+        display: flex;
+        padding-top: 12px;
+        padding-bottom: 12px;
+        margin-bottom: 10px;
+    }
+    .top-body-cart{
+        padding-top: 410px;
+    }
+    .cart-book-detail{
+        width:50%;
+        font-size: 12px;
+    }
+
+    .detail-book-cart1{
+        text-align:left;
+        margin-bottom: 10px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .detail-book-cart2{
+        text-align:left;
+        margin-bottom: 10px;
+        font-size: 8px;
+        color: silver;
+    }
+    .detail-book-cart3{
+        text-align:left;
+        margin-bottom: 20px;
+        font-size: 8px;
+        font-weight: bold;
+    }
+    .detail-book-cart4{
+        text-align:left;
+        margin-bottom: 10px;
+        font-size: 12px;
+        color: crimson;
+    }
+    .col-12 {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+    .top-body-cart1{
+        padding-top: 180px;
+    }
+    h3{
+        font-size: 20px !important;
+        padding-left: 25px !important;
+    }
+    .top-body-cart2{
+        padding-top: 25px;
+        margin-bottom: -225px;
+    }
+    .empty-form{
+        padding-top: 80px;
+    }
+    .top-body-cart4{
+        padding-top: 470px;
+    }
+    .top-body-cart5{
+        padding-top: 50px;
+        margin-bottom: -260px;
+    }
+}

@@ -1,0 +1,96 @@
+.box-all-books {
+    border: 1px gainsboro solid;
+    margin-top: 30px;
+    margin-left: 1px;
+    margin-right: 1px;
+}
+
+.box-all-books:hover {
+    box-shadow: 0px 4px 8px 2px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.box-all-books-photo {
+    padding-top: 14px;
+    padding-bottom: 14px;
+}
+
+/* [1] The container */
+.box-all-books-photo  {
+    height: 100%; /* [1.1] Set it as per your need */
+    overflow: hidden; /* [1.2] Hide the overflowing of child elements */
+  }
+  
+/* [2] Transition property for smooth transformation of images */
+.box-all-books-photo  img {
+transition: transform .5s ease;
+}
+
+/* [3] Finally, transforming the image when container gets hovered */
+.box-all-books-photo:hover img {
+transform: scale(1.5);
+}
+
+.box-all-books-title {
+    text-align: left;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.box-all-books-writer {
+    margin-top: 10px;
+    text-align: left;
+    font-size: 12px;
+    color: silver;
+}
+
+.box-all-books-price {
+    margin-top: 10px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: bold;
+    color: crimson;
+    padding-bottom: 14px;
+}
+
+.top-body{
+    padding-top: 110px;
+}
+
+@media screen and (max-width: 600px) {
+    div .col-sm-6 {
+        width: 165px;
+    }
+    .bottom-right {
+        padding-top: 30px;
+        padding-bottom: 40px;
+    }
+    .top-body {
+        padding-top: 375px;
+    }
+
+    .box-all-books-photo {
+        padding-top: 14px;
+        padding-bottom: 14px;
+    }
+    .box-all-books-title {
+        text-align: left;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .box-all-books-writer {
+        margin-top: 10px;
+        text-align: left;
+        font-size: 12px;
+        color: silver;
+    }
+    .box-all-books-price {
+        margin-top: 10px;
+        text-align: left;
+        font-size: 15px;
+        font-weight: bold;
+        color: crimson;
+        padding-bottom: 14px;
+    }
+}
+
+
