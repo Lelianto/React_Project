@@ -1,9 +1,13 @@
 import createStore from 'unistore';
 import axios from 'axios';
-
+// https://kutubuku.store
 // Initialization global state
 const initialState = {
-  baseUrl:'https://kutubuku.store',
+  typeText:'password',
+  bookEmptyStock:[],
+  baseUrl:'http://0.0.0.0:5000',
+  remainingBook:'',
+  addCartStatus:'',
   adminProductKeyword:'',
   adminKeyword:'',
   lengthCart:0,
@@ -79,6 +83,7 @@ export const store = createStore(initialState)
 export const actions = store => ({
   changeInput : async (state,e) => {
     await store.setState({ [e.target.name]: e.target.value});
+    console.log(state.keyword)
   },
 
   changeInputCart : async (state,e) => {
@@ -337,7 +342,10 @@ export const actions = store => ({
     };
     await axios(req)
       .then(response => {
-        return response
+        console.log(response.data.message)
+        store.setState({
+          'addCartStatus':response.data.message
+        })
       })
       .catch(error => {
         return false
@@ -470,7 +478,6 @@ export const actions = store => ({
 
   // Function for updating amount of buying item
   updateBuy : async (state) => {
-    
     const listBuy = state.totalBeli
     for (const product of listBuy) {
       const buybook = {
@@ -486,7 +493,21 @@ export const actions = store => ({
       };
       await axios(req)
           .then(response => {
-            return response
+            const listInCart = store.getState().carts.filter(item => {
+              if (item.id == product.id && item.email === localStorage.getItem('email') && item.foto_buku !== null && item.judul !== null && item.harga !== null && item.status_cart === false && item.berat !== null) {
+                  return item;
+              }
+              return false
+            })
+            const listBooks = []
+            for(const book of listInCart){
+              if(response.data.message=='stok buku tidak mencukupi' && book.book_id){
+                listBooks.push(book.judul)
+              }
+            }
+            store.setState({
+              bookEmptyStock:listBooks
+            })
           })
           .catch(error => {
             return false
@@ -528,6 +549,25 @@ export const actions = store => ({
         store.setState({
           userId:''
           })
+      })
+      .catch(error => {
+        return false
+    })
+  },
+
+  // Function for searching payment by admin
+  searchPayment : async (state) => {
+    const req = {
+      method: "get",
+      url: state.baseUrl+"/payment_confirm/code?keyword="+store.getState().keyword
+    };
+    console.log(req)
+    await axios(req)
+      .then(response => {
+        store.setState({
+          'listResults':response.data
+        })
+        return response
       })
       .catch(error => {
         return false

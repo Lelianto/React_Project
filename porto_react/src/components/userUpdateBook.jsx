@@ -6,17 +6,17 @@ import { store } from '../store'
 const allGenres = ['Romantis','Sejarah','Teenlit','Drama','Fantasi','Chicklit','Komedi','Misteri','Songlit','Thriller','Fan-Fiction','Dewasa','Horor','Petualangan','Metropop']
 
 class UserUpload extends React.Component {
-    // Function for uploading book by user
-    doAddBook = async () => {
-        await this.props.postBook()
-        if (store.getState().validasiPostBuku){
+    // Function for updating book by user
+    doUpdateBook = async () => {
+        await this.props.updateBook()
+        if (store.getState().validasiUpdateBuku){
             this.props.history.push("/profile");
         }
     }
-    
+
     render() {
         return (
-            <div className="container wrapper-new fadeInDown" style={{paddingTop:'100px'}}>
+        <div className="container wrapper-new fadeInDown" style={{paddingTop:'100px'}}>
             <div className='row'>
             <div id="">
                 <div className="fadeIn first">
@@ -53,7 +53,7 @@ class UserUpload extends React.Component {
                         id="publishDate"  
                         name="publishDate" 
                         pattern="(\b(1[0-2]|0[1-9])\/([1-9]([0-9]{3}))\b)"
-                        placeholder="Masukkan Tanggal Terbit (MM/YYYY)"
+                        placeholder="Masukkan Tanggal Terbit"
                         onChange={e => this.props.changeInput(e)} required/>
 
                         <input 
@@ -61,7 +61,7 @@ class UserUpload extends React.Component {
                         id="isbn"  
                         name="isbn" 
                         pattern="(\b([0-9]{13})\b)"
-                        placeholder="Masukkan Nomor ISBN (13 Digit)"
+                        placeholder="Masukkan Nomor ISBN"
                         onChange={e => this.props.changeInput(e)} required/>
 
                         <div class="form-group" style={{marginTop:'10px'}}>
@@ -101,7 +101,7 @@ class UserUpload extends React.Component {
                         <input 
                         type="text" 
                         id="lebar"  
-                        name="lebar" 
+                        name="lebar"
                         pattern="(^[0-9]*|[.][0-9]*)*$"
                         placeholder="Masukkan Lebar Buku (cm)"
                         onChange={e => this.props.changeInput(e)} required/>
@@ -135,7 +135,7 @@ class UserUpload extends React.Component {
                         id="harga"  
                         name="harga" 
                         pattern="^[0-9]*$"
-                        placeholder="Masukkan Harga Buku (digit tanpa titik)"
+                        placeholder="Masukkan Harga Buku"
                         onChange={e => this.props.changeInput(e)} required/>
 
                         <input 
@@ -143,7 +143,7 @@ class UserUpload extends React.Component {
                         id="stok"  
                         name="stok" 
                         pattern="^[0-9]*$"
-                        placeholder="Masukkan Stok Buku (jika tersedia)"
+                        placeholder="Masukkan Stok Buku"
                         onChange={e => this.props.changeInput(e)} required/>
 
                         <input 
@@ -160,7 +160,7 @@ class UserUpload extends React.Component {
                         type="submit" 
                         className="fadeIn fourth" 
                         value="Mulai Jual Buku" 
-                        onClick={this.doAddBook}/>
+                        onClick={this.doUpdateBook}/>
                     </form>
             </div>
             </div>
