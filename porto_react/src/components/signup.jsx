@@ -83,4 +83,5 @@ class SignUp extends React.Component {
   }
 }
 
-export default connect("typeText,nama_lengkap, email, password, isLoading",actions)(withRouter(SignUp));
+export default connect("typeText,nama_lengkap, email, password, isLoading",actions)(withRouter(SignUp));=======
+

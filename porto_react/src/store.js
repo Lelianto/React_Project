@@ -346,7 +346,6 @@ export const actions = store => ({
         store.setState({
           'addCartStatus':response.data.message
         })
-        // return response.data.message
       })
       .catch(error => {
         return false
@@ -446,7 +445,6 @@ export const actions = store => ({
       method: "get",
       url: state.baseUrl+"/book/search?keyword="+store.getState().keyword,
     };
-    console.log(req)
     await axios(req)
       .then(response => {
         store.setState({
@@ -574,7 +572,7 @@ export const actions = store => ({
       .catch(error => {
         return false
     })
-  },
+  }
 
   });
 

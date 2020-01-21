@@ -269,7 +269,6 @@ class BookDetail extends React.Component {
             
                     }
             </div>
-
             )
         }
     }
