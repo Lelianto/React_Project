@@ -6,6 +6,7 @@ import logo from '../images/bug-logo.png';
 import { withRouter, Link, Redirect } from 'react-router-dom'
 import { connect } from 'unistore/react'
 import { actions, store } from '../store'
+import swal from 'sweetalert'
 
 class SignIn extends React.Component {
   // Handle see password
@@ -24,7 +25,8 @@ class SignIn extends React.Component {
   doLogin = async () => {
     await this.props.postLogin()
     if (localStorage.getItem('token') !== null){
-        this.props.history.push("/profile");
+      swal("Selamat!", "Anda berhasil masuk!", "success");
+      this.props.history.push("/profile");
     }
     else {
       alert('Email atau Password Anda Salah...')
@@ -74,6 +76,7 @@ class SignIn extends React.Component {
             </div>
 
         </div>
+        
         </div>
     )
 
@@ -81,4 +84,3 @@ class SignIn extends React.Component {
 }
 
 export default connect("typeText, Bearer, email, password, isLoading",actions)(withRouter(SignIn));
-
