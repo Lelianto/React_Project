@@ -3,34 +3,35 @@ import axios from 'axios';
 // https://kutubuku.store
 // Initialization global state
 const initialState = {
+  isSignUp:false,
   typeText:'password',
   bookEmptyStock:[],
-  baseUrl:'http://0.0.0.0:5000',
+  baseUrl:'https://kutubuku.store',
   remainingBook:'',
   addCartStatus:'',
   adminProductKeyword:'',
   adminKeyword:'',
   lengthCart:0,
-  paymentId:'', //id_payment (n)
-  cartId:'', //id_cart (n)
-  userId:'', //id_user (ada)
+  paymentId:'', 
+  cartId:'',
+  userId:'', 
   adminAllPayment:[],
   userAllCart:[],
   adminAllCart:[],
   userData:[],
-  userCartId:0, //cart_id (ada)
+  userCartId:0, 
   adminAllBook:[],
   allUser:[],
   bookOwn:[],
-  orderCode:'', //kode_pemesanan (ada)
-  orderDate:'', //tanggal_pemesanan
-  totalPayment:'', //total_pembayaran  
+  orderCode:'',
+  orderDate:'', 
+  totalPayment:'',
   listResults:[],
   listCategory:[],
-  shippingCost:0,//ongkos_kirim  
-  totalPrice:0, //total_price  
+  shippingCost:0,
+  totalPrice:0,
   carts:[],
-  bookId:'',//book_id  
+  bookId:'',
   books:[],
   bookById:[],
   userById:[],
@@ -38,15 +39,15 @@ const initialState = {
   isLoading:true,
   token:'',
   photo:'',
-  fullName:'',//nama_lengkap  
+  fullName:'',
   email:'',
-  password:'',//kata_sandi  
-  isLogin: false,//is_login (ada)
+  password:'',
+  isLogin: false,
   Bearer:'',
   title:'',
   writer:'',
-  pageTitle:'',//judul_halaman
-  totalPage:0, //jumlah_halaman
+  pageTitle:'',
+  totalPage:0,
   publishDate:'',
   isbn:'',
   genre:'',
@@ -67,23 +68,23 @@ const initialState = {
   address: true,
   streetName:'',
   rtRw:'',
-  village:'', // kelurahan     
-  region:'', // kecamatan
-  cityState:'', // kota_kabupaten 
-  province:'', // provinsi
-  postalCode:'', //kode_pos
-  phoneNumber:'', // nomor_telepon
+  village:'',   
+  region:'', 
+  cityState:'',
+  province:'', 
+  postalCode:'', 
+  phoneNumber:'',
   validasiPostBuku:false,
   validasiUpdateBuku:false,
-  cartContent:true // cart_content
+  cartContent:true 
 }
 
 export const store = createStore(initialState)
 
 export const actions = store => ({
   changeInput : async (state,e) => {
+    console.log(e.target.name)
     await store.setState({ [e.target.name]: e.target.value});
-    console.log(state.keyword)
   },
 
   changeInputCart : async (state,e) => {
@@ -112,15 +113,14 @@ export const actions = store => ({
         },
         data: mydata
       };
-
       await axios(req)
-          .then(response => {
-                store.setState({
-                    "is_Lgin": true
-                });
-          })
-          .catch(error => {
-              return false
+        .then(response => {
+            store.setState({
+                isSignUp: true
+            });
+        })
+        .catch(error => {
+          return false
       })
   },
 
@@ -215,7 +215,7 @@ export const actions = store => ({
   deleteItem : async (state) => {
     const req = {
       method: "delete",
-      url: state.baseUrl+"/book/edit/"+state.book_Id,
+      url: state.baseUrl+"/book/edit/"+state.bookId,
       headers: {
         Authorization: "Bearer " + localStorage.getItem('token')
       }
@@ -223,7 +223,7 @@ export const actions = store => ({
     await axios(req)
       .then(response => {
         store.setState({
-            book_Id:''
+            bookId:''
         })
       })
       .catch(error => {
@@ -243,7 +243,7 @@ export const actions = store => ({
     await axios(req)
       .then(response => {
         store.setState({
-            book_Id:''
+            bookId:''
         })
     })
     .catch(error => {
@@ -445,6 +445,7 @@ export const actions = store => ({
       method: "get",
       url: state.baseUrl+"/book/search?keyword="+store.getState().keyword,
     };
+    console.log(req)
     await axios(req)
       .then(response => {
         store.setState({
